@@ -1,5 +1,6 @@
-package com.beyblade.scroreboard.middleware;
+package com.beyblade.scoreboard.middleware;
 
+import com.beyblade.scoreboard.exception.BeyBladeNotFoundException;
 import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.model.ValueRange;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,7 +80,7 @@ public class GoogleSheetApiService {
                 }
             }
         }
-        return -1; // Not found
+        return -1;
     }
 
     public String getCellValue(String range) throws Exception {

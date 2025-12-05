@@ -1,9 +1,10 @@
-package com.beyblade.scroreboard.service.impl;
+package com.beyblade.scoreboard.service.impl;
 
-import com.beyblade.scroreboard.constant.CellCodes;
-import com.beyblade.scroreboard.dto.Player;
-import com.beyblade.scroreboard.service.ScoreService;
-import com.beyblade.scroreboard.middleware.GoogleSheetApiService;
+import com.beyblade.scoreboard.constant.CellCodes;
+import com.beyblade.scoreboard.dto.Player;
+import com.beyblade.scoreboard.exception.BeyBladeNotFoundException;
+import com.beyblade.scoreboard.service.ScoreService;
+import com.beyblade.scoreboard.middleware.GoogleSheetApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,10 +21,12 @@ public class ScoreServiceImpl implements ScoreService {
         try {
             //Update Stats For Player A
             int rowNoA = sheetApi.getRowNumber(playerA.getCode());
-            updateStats(rowNoA,playerA);
-
-            //Update Stats For Player B
             int rowNoB = sheetApi.getRowNumber(playerB.getCode());
+            if (rowNoA < 0 || rowNoB < 0) {
+                throw new BeyBladeNotFoundException("Beyblade code not found");
+            }
+
+            updateStats(rowNoA,playerA);
             updateStats(rowNoB,playerB);
 
             if(playerA.getScore() > playerB.getScore()) {

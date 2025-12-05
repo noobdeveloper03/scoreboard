@@ -1,4 +1,4 @@
-package com.beyblade.scroreboard;
+package com.beyblade.scoreboard;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

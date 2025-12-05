@@ -1,6 +1,6 @@
-package com.beyblade.scroreboard.service;
+package com.beyblade.scoreboard.service;
 
-import com.beyblade.scroreboard.dto.Player;
+import com.beyblade.scoreboard.dto.Player;
 
 public interface ScoreService {
 

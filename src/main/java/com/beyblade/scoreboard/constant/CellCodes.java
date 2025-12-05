@@ -1,4 +1,4 @@
-package com.beyblade.scroreboard.constant;
+package com.beyblade.scoreboard.constant;
 
 public class CellCodes {
 

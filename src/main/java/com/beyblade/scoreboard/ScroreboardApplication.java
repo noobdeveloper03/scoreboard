@@ -1,4 +1,4 @@
-package com.beyblade.scroreboard;
+package com.beyblade.scoreboard;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

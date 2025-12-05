@@ -1,4 +1,4 @@
-package com.beyblade.scroreboard.config;
+package com.beyblade.scoreboard.config;
 
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.http.HttpRequestInitializer;
