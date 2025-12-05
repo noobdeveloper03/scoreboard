@@ -27,10 +27,10 @@ public class GoogleSheetApiService {
     }
 
     public void updateCell(String sheetName, String cell, Object value) throws Exception {
-        String range = sheetName + "!" + cell; // Example: "Sheet1!C7"
+        String range = sheetName + "!" + cell;
 
         ValueRange body = new ValueRange()
-                .setValues(List.of(List.of(value)));  // Single cell update
+                .setValues(List.of(List.of(value)));
 
         sheets.spreadsheets().values()
                 .update(spreadsheetId, range, body)
@@ -39,7 +39,7 @@ public class GoogleSheetApiService {
     }
 
     public String findCell(String sheetName, String valueToFind) throws Exception {
-        String range = sheetName; // Reads entire sheet
+        String range = sheetName;
 
         ValueRange response = sheets.spreadsheets().values()
                 .get(spreadsheetId, range)
@@ -56,16 +56,14 @@ public class GoogleSheetApiService {
                 String colValue = cols.get(col).toString().replaceAll("\\s+", "");
                 if (colValue.equalsIgnoreCase(valueToFind)) {
 
-                    // Convert numeric column index to Excel-style column letters
                     String columnLetter = convertToColumnLetter(col + 1);
 
-                    // Row index +1 because Sheets uses 1-based index
                     return columnLetter + (row + 1);
                 }
             }
         }
 
-        return null; // value not found
+        return null;
     }
 
     public int getRowNumber(String targetValue) throws Exception {
@@ -76,7 +74,7 @@ public class GoogleSheetApiService {
                 Object cellValue = columnData.get(i).get(0);
 
                 if (cellValue != null && cellValue.toString().equalsIgnoreCase(targetValue)) {
-                    return i + 1; // Sheets uses 1-based row index
+                    return i + 1;
                 }
             }
         }
@@ -91,10 +89,10 @@ public class GoogleSheetApiService {
         List<List<Object>> values = response.getValues();
 
         if (values == null || values.isEmpty()) {
-            return null; // Cell is empty
+            return null;
         }
 
-        return values.get(0).get(0).toString(); // Return the cell value
+        return values.get(0).get(0).toString();
     }
 
     private String convertToColumnLetter(int column) {
