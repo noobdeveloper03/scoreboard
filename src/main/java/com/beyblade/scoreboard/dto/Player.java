@@ -1,7 +1,4 @@
-package com.beyblade.scroreboard.dto;
-
-import lombok.Getter;
-import lombok.Setter;
+package com.beyblade.scoreboard.dto;
 
 public class Player {
 
