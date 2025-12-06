@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+//null is only allowed during local, remove if this is going to be upload in the internet
 @RestController
-@CrossOrigin(origins = "*")
 public class MainController {
 
 
